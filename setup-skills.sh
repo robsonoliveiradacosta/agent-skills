@@ -8,6 +8,17 @@
 #
 set -euo pipefail
 
+# ---- prerequisites ------------------------------------------------------------
+# Fail early with a clear message instead of blowing up mid-install.
+for bin in node npm npx; do
+  if ! command -v "$bin" >/dev/null 2>&1; then
+    echo "✗ '$bin' not found. Install Node.js first." >&2
+    echo "  macOS: 'brew install node' or use nvm (https://github.com/nvm-sh/nvm)." >&2
+    echo "  Other: https://nodejs.org" >&2
+    exit 1
+  fi
+done
+
 # non-interactive skills CLI (auto-installs the `skills` package via npx --yes)
 add() { npx --yes skills add -y "$@"; }
 
