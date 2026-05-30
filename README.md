@@ -126,6 +126,24 @@ A heavier, document-first flow (`PRD → tech spec → tasks → execute`) that 
 | [`create-tasks`](skills/create-tasks/SKILL.md) | Break the PRD + tech spec into an ordered `tasks.md` plus one `<num>_task.md` per task (approval-gated). |
 | [`execute-task`](skills/execute-task/SKILL.md) | Pick the next available task, implement it end to end, and tick its box in `tasks.md`. |
 
+Run them in order — each step reads the previous step's output:
+
+```
+create-prd       →  tasks/prd-<feature>/prd.md        # what + why (asks clarifying questions first)
+create-techspec  →  tasks/prd-<feature>/techspec.md   # how: architecture + decisions
+create-tasks     →  tasks/prd-<feature>/tasks.md      # ordered checklist + one <num>_task.md per task
+execute-task                                          # implements the next task, then ticks its box
+```
+
+Install the whole pipeline at once:
+
+```bash
+npx skills add robsonoliveiradacosta/agent-skills \
+  --skill create-prd --skill create-techspec --skill create-tasks --skill execute-task
+```
+
+> Use this when you want a heavier, document-first paper trail. For a lighter in-repo flow, prefer the spec-driven skills above.
+
 ### Docs & governance
 
 | Skill | Description |
