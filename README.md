@@ -23,7 +23,7 @@ Useful flags:
 
 ## Skills
 
-57 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus a few agent-agnostic ones like `commit` and the spec-driven workflow).
+61 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
 
 ### Project setup & scaffolding
 
@@ -114,6 +114,17 @@ Useful flags:
 | [`spec-plan`](skills/spec-plan/SKILL.md) | Turn a spec into an architectural `plan.md` naming files, migrations, and skills to use. |
 | [`spec-tasks`](skills/spec-tasks/SKILL.md) | Break the plan into an ordered, atomic `tasks.md` checklist with validation steps. |
 | [`spec-implement`](skills/spec-implement/SKILL.md) | Execute the next pending task, run its validation, and tick the checkbox when it passes. |
+
+### PRD-driven workflow
+
+A heavier, document-first flow (`PRD → tech spec → tasks → execute`) that writes everything under `tasks/prd-<feature>/`. Each step asks for approval before writing files; templates ship bundled inside each skill.
+
+| Skill | Description |
+| --- | --- |
+| [`create-prd`](skills/create-prd/SKILL.md) | Ask clarifying questions, then write a Product Requirements Document (`prd.md`) focused on the what/why. |
+| [`create-techspec`](skills/create-techspec/SKILL.md) | Read the PRD, analyze the repo, and write an implementation-ready Tech Spec (`techspec.md`). |
+| [`create-tasks`](skills/create-tasks/SKILL.md) | Break the PRD + tech spec into an ordered `tasks.md` plus one `<num>_task.md` per task (approval-gated). |
+| [`execute-task`](skills/execute-task/SKILL.md) | Pick the next available task, implement it end to end, and tick its box in `tasks.md`. |
 
 ### Docs & governance
 
