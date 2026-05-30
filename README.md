@@ -1,6 +1,6 @@
 # agent-skills
 
-A collection of agent-agnostic [Agent Skills](https://github.com/vercel-labs/skills) — reusable instruction sets in the universal `SKILL.md` format. Install them into Claude Code, Cursor, opencode, Codex, Windsurf, and 40+ other agents with the `skills` CLI.
+A collection of agent-agnostic Agent Skills — reusable instruction sets in the universal `SKILL.md` format. Install them into Claude Code, Cursor, opencode, Codex, Windsurf, and 40+ other agents with the `skills` CLI.
 
 ## Install
 
