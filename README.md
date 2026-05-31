@@ -23,7 +23,7 @@ Useful flags:
 
 ## Skills
 
-61 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
+65 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
 
 ### Project setup & scaffolding
 
@@ -33,6 +33,19 @@ Useful flags:
 | [`add-crud-resource`](skills/add-crud-resource/SKILL.md) | Generate a full CRUD slice for a new entity — entity, repository, service, resource, DTOs, migration, and tests in one pass. |
 | [`dockerized-quarkus-runtime`](skills/dockerized-quarkus-runtime/SKILL.md) | Package and run the API with multi-stage Dockerfile + docker-compose (Postgres/MinIO), health checks, JVM/native builds. |
 | [`add-ci-pipeline`](skills/add-ci-pipeline/SKILL.md) | Generate a GitHub Actions pipeline — build, tests against real Postgres, JVM/native matrix, Trivy scan, SBOM, GHCR release. |
+
+### Frontend (Angular)
+
+A separate-repo Angular SPA that consumes the Quarkus API through a generated OpenAPI client. Pairs with the design skills in [`external-skills.md`](external-skills.md) (`frontend-design`, `ui-ux-pro-max`, `angular-developer`).
+
+| Skill | Description |
+| --- | --- |
+| [`bootstrap-angular-app`](skills/bootstrap-angular-app/SKILL.md) | Scaffold a standalone Angular app (signals, Tailwind) wired to the API via a generated `typescript-angular` OpenAPI client, with env config and a dev proxy. |
+| [`add-angular-jwt-auth`](skills/add-angular-jwt-auth/SKILL.md) | Login/refresh against the Quarkus JWT backend — Bearer interceptor, **proactive** token refresh before expiry, and `authGuard`/`roleGuard` route protection. |
+| [`add-primeng-ui`](skills/add-primeng-ui/SKILL.md) | Wire PrimeNG (component library) into a Tailwind app the v18+ way — `providePrimeNG` theme preset plus the CSS `@layer` order that makes PrimeNG and Tailwind coexist. |
+| [`add-angular-ci`](skills/add-angular-ci/SKILL.md) | GitHub Actions for the SPA — build, lint, headless tests, an OpenAPI-client drift check, and static deploy (Nginx / S3+CloudFront / Vercel). |
+
+Run them in order — each builds on the previous: `bootstrap-angular-app` → `add-angular-jwt-auth` → `add-primeng-ui` (optional) → `add-angular-ci`.
 
 ### REST API features
 
