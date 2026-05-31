@@ -23,7 +23,7 @@ Useful flags:
 
 ## Skills
 
-65 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
+66 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
 
 ### Project setup & scaffolding
 
@@ -32,6 +32,7 @@ Useful flags:
 | [`bootstrap-quarkus-rest`](skills/bootstrap-quarkus-rest/SKILL.md) | Scaffold a new Quarkus REST project with the repo's layered architecture (resource/service/repository/entity), Flyway, JWT, Docker. |
 | [`add-crud-resource`](skills/add-crud-resource/SKILL.md) | Generate a full CRUD slice for a new entity — entity, repository, service, resource, DTOs, migration, and tests in one pass. |
 | [`dockerized-quarkus-runtime`](skills/dockerized-quarkus-runtime/SKILL.md) | Package and run the API with multi-stage Dockerfile + docker-compose (Postgres/MinIO), health checks, JVM/native builds. |
+| [`dockerize-frontend-backend`](skills/dockerize-frontend-backend/SKILL.md) | Hardened, production-grade Dockerfiles + secure docker-compose for backend and/or frontend — multi-stage, minimal digest-pinned bases, non-root, HEALTHCHECK, `.dockerignore`, runtime hardening. |
 | [`add-ci-pipeline`](skills/add-ci-pipeline/SKILL.md) | Generate a GitHub Actions pipeline — build, tests against real Postgres, JVM/native matrix, Trivy scan, SBOM, GHCR release. |
 
 ### Frontend (Angular)
