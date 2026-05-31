@@ -21,6 +21,19 @@ Useful flags:
 - `-g` — install globally (`~/.<agent>/skills/`) instead of per-project.
 - `-y` — non-interactive, for CI/CD.
 
+## Setup scripts
+
+Two helper scripts for machine setup (run once per machine):
+
+```bash
+./setup-skills.sh        # install the third-party skills used across projects (see external-skills.md)
+./setup-skills.sh --angular   # add the Angular dev skill to the CURRENT project
+./setup-git-hooks.sh     # install the global commit-msg hook (strips AI attribution from commit messages)
+```
+
+- **`setup-skills.sh`** installs the machine-wide `agent-browser` CLI and the global third-party skills (`frontend-design`, `ui-ux-pro-max`, `web-design-guidelines`, `brainstorming`, `writing-plans`, `agent-browser`). The `--angular` flag instead adds `angular-developer` to the current project.
+- **`setup-git-hooks.sh`** installs `git-hooks/commit-msg` to `~/.config/git/hooks/` and points `git config --global core.hooksPath` at it, so every commit on the machine has any `Co-Authored-By: Claude` / "Generated with Claude Code" attribution stripped. The hook delegates to a repo-local `.git/hooks/commit-msg` if one exists. Repos that set their own `core.hooksPath` (e.g. Husky) bypass it. Revert with `git config --global --unset core.hooksPath`.
+
 ## Skills
 
 68 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
