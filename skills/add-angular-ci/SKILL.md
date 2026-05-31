@@ -25,7 +25,7 @@ After running, the repo has:
 
 | Input | Default |
 |---|---|
-| Node version | `20` |
+| Node version | `24` (current LTS, matches Angular 21) |
 | Package manager | `npm` (uses `npm ci`) |
 | Deploy target | ask: `nginx` \| `s3-cloudfront` \| `vercel` |
 | Deploy on | push to `main` (and tags, if releasing) |
@@ -79,7 +79,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
       - run: npm ci
 

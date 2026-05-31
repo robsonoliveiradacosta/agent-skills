@@ -39,7 +39,7 @@ Ask these in **one** consolidated message — don't go one at a time.
 
 ## Prerequisites
 
-- **Node ≥ 20** and a recent Angular CLI (`npm i -g @angular/cli`). Confirm `node -v` before scaffolding; abort with a clear message if older.
+- **Node ≥ 24** (current LTS) and the Angular 21 CLI (`npm i -g @angular/cli@21`). Confirm `node -v` before scaffolding; abort with a clear message if older — Angular 21 requires an actively-supported Node line.
 - The backend must expose its OpenAPI document. Quarkus serves it at `/q/openapi` (YAML) when `quarkus-smallrye-openapi` is present — which the [`api-docs-openapi-health`](../api-docs-openapi-health/SKILL.md) skill sets up. If it's unreachable, fall back to a committed `openapi.yaml` and tell the user to refresh it when the API changes.
 
 > This skill produces the **Angular-side** client. It complements [`add-openapi-client-gen`](../add-openapi-client-gen/SKILL.md), which generates SDKs from the backend side; here the generated client is owned by and versioned with the frontend repo.
@@ -49,7 +49,7 @@ Ask these in **one** consolidated message — don't go one at a time.
 1. Verify Node version and that the target directory is empty / a fresh git repo.
 2. Scaffold the app (standalone is the modern default; routing on; CSS so Tailwind owns styling):
    ```bash
-   ng new {{appName}} --standalone --routing --style=css --ssr=false
+   npx @angular/cli@21 new {{appName}} --standalone --routing --style=css --ssr=false
    cd {{appName}}
    ```
 3. Add Tailwind (see "Tailwind setup" below).
@@ -190,13 +190,13 @@ npm i -D @openapitools/openapi-generator-cli
 ```json
 {
   "scripts": {
-    "api:gen": "openapi-generator-cli generate -i {{openapiSource}} -g typescript-angular -o src/app/api --additional-properties=ngVersion=18.0.0,withInterfaces=true,fileNaming=kebab-case",
-    "api:gen:offline": "openapi-generator-cli generate -i openapi.yaml -g typescript-angular -o src/app/api --additional-properties=ngVersion=18.0.0,withInterfaces=true,fileNaming=kebab-case"
+    "api:gen": "openapi-generator-cli generate -i {{openapiSource}} -g typescript-angular -o src/app/api --additional-properties=ngVersion=21.0.0,withInterfaces=true,fileNaming=kebab-case",
+    "api:gen:offline": "openapi-generator-cli generate -i openapi.yaml -g typescript-angular -o src/app/api --additional-properties=ngVersion=21.0.0,withInterfaces=true,fileNaming=kebab-case"
   }
 }
 ```
 
-> Commit the **generated output** so the repo builds without the backend running, but always regenerate from the source of truth (`/q/openapi`) when the API changes — never hand-edit. CI verifies the committed client is in sync (see `add-angular-ci`).
+> Keep `ngVersion` in step with the Angular major you scaffolded (21 here) so the generated client matches the app's APIs. Commit the **generated output** so the repo builds without the backend running, but always regenerate from the source of truth (`/q/openapi`) when the API changes — never hand-edit. CI verifies the committed client is in sync (see `add-angular-ci`).
 
 ### Example feature consuming the client
 
