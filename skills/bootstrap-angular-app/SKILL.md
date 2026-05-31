@@ -15,7 +15,7 @@ After running, the project has:
 - A generated API client under `src/app/api` (regenerable with `npm run api:gen`)
 - Per-environment API base URL (`environment.ts` / `environment.prod.ts`)
 - A dev proxy so `ng serve` reaches the backend without CORS pain
-- Ready hand-off points for [`add-angular-jwt-auth`](../add-angular-jwt-auth/SKILL.md) and [`add-angular-ci`](../add-angular-ci/SKILL.md)
+- Ready hand-off points for [`add-angular-jwt-auth`](../add-angular-jwt-auth/SKILL.md), [`add-primeng-ui`](../add-primeng-ui/SKILL.md), and [`add-angular-ci`](../add-angular-ci/SKILL.md)
 
 ## When to invoke
 
@@ -243,7 +243,7 @@ Tell the user:
 - The dev workflow: `npm start` (serves on `:4200`, proxies `/v1` to the backend).
 - That `npm run api:gen` regenerates the client whenever the API changes.
 - The prod API URL they must set in `environment.prod.ts` (or runtime `config.json`), and that the backend's `CORS_ALLOWED_ORIGINS` must include the deployed frontend origin.
-- Next steps: run [`add-angular-jwt-auth`](../add-angular-jwt-auth/SKILL.md) for login/guards, then [`add-angular-ci`](../add-angular-ci/SKILL.md) for the pipeline.
+- Next steps: run [`add-angular-jwt-auth`](../add-angular-jwt-auth/SKILL.md) for login/guards, [`add-primeng-ui`](../add-primeng-ui/SKILL.md) if you want a component library (PrimeNG + Tailwind), then [`add-angular-ci`](../add-angular-ci/SKILL.md) for the pipeline.
 
 ---
 
