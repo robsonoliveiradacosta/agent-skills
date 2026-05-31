@@ -36,6 +36,12 @@ After running, the repo has:
 
 The frontend consumes a **generated** OpenAPI client (see `bootstrap-angular-app`). If someone changes the backend contract and the committed client isn't regenerated, the app compiles against a stale contract and breaks at runtime. The pipeline regenerates the client in CI and fails if it differs from what's committed — turning a silent runtime break into a loud, early build failure. If CI can't reach a running backend, point the check at the committed `openapi.yaml` and treat that file as the contract of record.
 
+## Library / framework grounding (context7)
+
+GitHub Actions marketplace actions (`actions/setup-node`, `actions/checkout`, `actions/upload-artifact`, `aws-actions/configure-aws-credentials`) and the `openapi-generator-cli` flags get version bumps that change inputs and major tags. Before writing the workflow, verify current action majors and arguments via `mcp__context7__query-docs` (e.g. `"actions/setup-node v4 inputs"`, `"configure-aws-credentials OIDC role-to-assume"`). Pinning a stale major silently breaks CI.
+
+- **If context7 is not installed** (the `mcp__context7__*` tools aren't present): proceed with training data, but note it once at the end and point the user at `AGENTS.md` §"MCP servers (context7)" for the install one-liner.
+
 ## Workflow
 
 1. Confirm the repo builds locally (`npm ci && npm run build`).

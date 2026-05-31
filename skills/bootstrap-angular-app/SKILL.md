@@ -42,6 +42,12 @@ Ask these in **one** consolidated message — don't go one at a time.
 - **Node ≥ 24** (current LTS) and the Angular 21 CLI (`npm i -g @angular/cli@21`). Confirm `node -v` before scaffolding; abort with a clear message if older — Angular 21 requires an actively-supported Node line.
 - The backend must expose its OpenAPI document. Quarkus serves it at `/q/openapi` (YAML) when `quarkus-smallrye-openapi` is present — which the [`api-docs-openapi-health`](../api-docs-openapi-health/SKILL.md) skill sets up. If it's unreachable, fall back to a committed `openapi.yaml` and tell the user to refresh it when the API changes.
 
+## Library / framework grounding (context7)
+
+Angular and its CLI move fast — `ng new` flags, `provideHttpClient`/`provideRouter` APIs, the Tailwind v4 PostCSS wiring, and the `typescript-angular` generator options all drift between majors. Before generating config, verify the current shape against live docs via `mcp__context7__query-docs` (e.g. `"Angular 21 ng new standalone flags"`, `"openapi-generator typescript-angular ngVersion"`). Your training data may predate the version the user installs.
+
+- **If context7 is not installed** (the `mcp__context7__*` tools aren't present): proceed with training data, but say so once at the end (e.g. "context7 unavailable — Angular 21 CLI flags from training data, verify with `ng new --help`"). Point the user at `AGENTS.md` §"MCP servers (context7)" for the install one-liner.
+
 > This skill produces the **Angular-side** client. It complements [`add-openapi-client-gen`](../add-openapi-client-gen/SKILL.md), which generates SDKs from the backend side; here the generated client is owned by and versioned with the frontend repo.
 
 ## Workflow

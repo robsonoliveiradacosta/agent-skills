@@ -49,6 +49,12 @@ Make sure the user understands this; it's the difference between "auth works" an
 
 Because the backend has no httpOnly refresh cookie, **persisting across reloads securely isn't possible from the frontend alone**. If the product needs durable sessions, the right fix is on the backend (a long-lived refresh token in an httpOnly, SameSite cookie) — call that out rather than papering over it with `localStorage`. Default to in-memory.
 
+## Library / framework grounding (context7)
+
+The functional auth APIs this skill relies on — `withInterceptors`/`HttpInterceptorFn`, `CanActivateFn`, `provideHttpClient`, signals — are exactly the surface Angular has been reshaping release to release. Before generating, confirm the current signatures via `mcp__context7__query-docs` (e.g. `"Angular 21 functional HttpInterceptorFn"`, `"Angular CanActivateFn createUrlTree"`). Don't emit deprecated class-based interceptors/guards from stale memory.
+
+- **If context7 is not installed** (the `mcp__context7__*` tools aren't present): proceed with training data, but note it once at the end and point the user at `AGENTS.md` §"MCP servers (context7)" for the install one-liner.
+
 ## Workflow
 
 1. Confirm the project came from `bootstrap-angular-app` (standalone, `provideHttpClient`, env + `API_BASE_URL`).

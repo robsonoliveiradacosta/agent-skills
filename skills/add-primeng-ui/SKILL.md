@@ -42,6 +42,12 @@ The symptom users hit: *"my Tailwind classes don't override PrimeNG"* or *"Prime
 - A standalone Angular 21 app with Tailwind already configured (`bootstrap-angular-app`).
 - Angular animations available — this skill adds `provideAnimationsAsync()` if missing.
 
+## Library / framework grounding (context7)
+
+PrimeNG's theming API changed substantially at v18 (`@primeng/themes`, `providePrimeNG`, the `cssLayer` option) and keeps evolving — this is the single most important thing to verify against live docs, because training data from an earlier PrimeNG era will produce the *old* CSS-theme-import setup that no longer works. Before generating, confirm the current API via `mcp__context7__query-docs` (e.g. `"PrimeNG providePrimeNG theme preset cssLayer"`, `"PrimeNG Tailwind CSS layer order"`). Match the version the user actually installs.
+
+- **If context7 is not installed** (the `mcp__context7__*` tools aren't present): proceed with training data, but say so once at the end (the theming API is version-sensitive — flag it explicitly) and point the user at `AGENTS.md` §"MCP servers (context7)" for the install one-liner.
+
 ## Workflow
 
 1. Install dependencies.
