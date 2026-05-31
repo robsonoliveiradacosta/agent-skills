@@ -23,7 +23,7 @@ Useful flags:
 
 ## Skills
 
-66 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
+68 skills, mostly geared toward backend APIs built with **Quarkus 3.x + Panache + PostgreSQL** (plus an **Angular frontend** set, a few agent-agnostic ones like `commit`, the spec-driven workflow, and the PRD-driven workflow).
 
 ### Project setup & scaffolding
 
@@ -34,6 +34,7 @@ Useful flags:
 | [`dockerized-quarkus-runtime`](skills/dockerized-quarkus-runtime/SKILL.md) | Package and run the API with multi-stage Dockerfile + docker-compose (Postgres/MinIO), health checks, JVM/native builds. |
 | [`dockerize-frontend-backend`](skills/dockerize-frontend-backend/SKILL.md) | Hardened, production-grade Dockerfiles + secure docker-compose for backend and/or frontend — multi-stage, minimal digest-pinned bases, non-root, HEALTHCHECK, `.dockerignore`, runtime hardening. |
 | [`add-ci-pipeline`](skills/add-ci-pipeline/SKILL.md) | Generate a GitHub Actions pipeline — build, tests against real Postgres, JVM/native matrix, Trivy scan, SBOM, GHCR release. |
+| [`add-gitlab-ci`](skills/add-gitlab-ci/SKILL.md) | GitLab CI/CD (`.gitlab-ci.yml`) for the Quarkus API — Maven cache, tests vs real Postgres, native, Kaniko image to the GitLab registry, container/dependency scanning, SBOM, tag release. |
 
 ### Frontend (Angular)
 
@@ -45,6 +46,7 @@ A separate-repo Angular SPA that consumes the Quarkus API through a generated Op
 | [`add-angular-jwt-auth`](skills/add-angular-jwt-auth/SKILL.md) | Login/refresh against the Quarkus JWT backend — Bearer interceptor, **proactive** token refresh before expiry, and `authGuard`/`roleGuard` route protection. |
 | [`add-primeng-ui`](skills/add-primeng-ui/SKILL.md) | Wire PrimeNG (component library) into a Tailwind app the v18+ way — `providePrimeNG` theme preset plus the CSS `@layer` order that makes PrimeNG and Tailwind coexist. |
 | [`add-angular-ci`](skills/add-angular-ci/SKILL.md) | GitHub Actions for the SPA — build, lint, headless tests, an OpenAPI-client drift check, and static deploy (Nginx / S3+CloudFront / Vercel). |
+| [`add-angular-gitlab-ci`](skills/add-angular-gitlab-ci/SKILL.md) | GitLab CI/CD (`.gitlab-ci.yml`) for the SPA — build, lint, headless tests, OpenAPI-client drift check, and deploy (Kaniko/registry image, S3+CloudFront via OIDC, or Vercel). |
 
 Run them in order — each builds on the previous: `bootstrap-angular-app` → `add-angular-jwt-auth` → `add-primeng-ui` (optional) → `add-angular-ci`.
 
